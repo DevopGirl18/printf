@@ -16,6 +16,7 @@ int _printf(const char *format, ...)
 		{"d", print_int},
 		{"i", print_int},
 		{"b", print_bin},
+		{"r", print_rev},
 		{NULL, NULL}
 	};
 	va_list args;
@@ -24,7 +25,7 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(args, format);
-	char_count += printer(format, specifiers, args);
+	char_count = printer(format, specifiers, args);
 	va_end(args);
 
 	return (char_count);
@@ -40,7 +41,7 @@ int _printf(const char *format, ...)
  */
 int printer(const char *format, form_spec specifiers[], va_list args)
 {
-	int i = 0, j, char_count = 0;
+	int i = 0, j, char_count = 0, checker;
 
 	while (format[i])
 	{
@@ -53,7 +54,10 @@ int printer(const char *format, form_spec specifiers[], va_list args)
 			{
 				if (format[i] == specifiers[j].c[0])
 				{
-					char_count += specifiers[j].f(args);
+					checker = specifiers[j].f(args);
+					if (checker == -1)
+						return (-1);
+					char_count += checker;
 					break;
 				}
 			}

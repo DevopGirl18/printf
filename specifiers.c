@@ -8,15 +8,12 @@
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
-
-	if (!c)
-		return (-1);
 	return (print_string(&c));
 }
 
 
 /**
- * print_string - prints a string
+ * print_str - prints a string
  * @args: argument pointer
  * Return: number of characters printed
  */
