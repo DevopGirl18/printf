@@ -48,3 +48,26 @@ int print_string(char *str)
 	}
 	return (len);
 }
+
+
+/**
+ * print_binary - prints a value in binary format, recursively
+ * @value: value to print
+ * Return: number of digits printed
+ */
+int print_binary(unsigned int value)
+{
+	int count = 0;
+
+	if (value == 0)
+	{
+		return (0);
+	}
+	else
+	{
+		count += print_binary(value / 2);
+		count += _putchar((value % 2) + '0');
+	}
+
+	return (count);
+}

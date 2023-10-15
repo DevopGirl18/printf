@@ -20,7 +20,7 @@ int print_char(va_list args)
  * @args: argument pointer
  * Return: number of characters printed
  */
-int print_string(va_list args)
+int print_str(va_list args)
 {
 	char *str = va_arg(args, char *);
 
@@ -34,7 +34,7 @@ int print_string(va_list args)
  * print_percent - prints a percent symbol
  * Return: number of characters printed
  */
-int print_percent(void)
+int print_percent()
 {
 	return (_putchar('%'));
 }

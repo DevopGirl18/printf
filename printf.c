@@ -8,13 +8,14 @@
 
 int _printf(const char *format, ...)
 {
-	int j, checker, char_count = 0, i = 0;
+	int char_count = 0;
 	form_spec specifiers[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'%', print_percent},
-		{'d', print_int},
-		{'i', print_int},
+		{"c", print_char},
+		{"s", print_str},
+		{"%", print_percent},
+		{"d", print_int},
+		{"i", print_int},
+		{"b", print_bin},
 		{NULL, NULL}
 	};
 	va_list args;
@@ -50,7 +51,7 @@ int printer(const char *format, form_spec specifiers[], va_list args)
 				return (-1);
 			for (j = 0; specifiers[j].c != NULL; j++)
 			{
-				if (format[i] == specifiers[j].c)
+				if (format[i] == specifiers[j].c[0])
 				{
 					char_count += specifiers[j].f(args);
 					break;
@@ -66,6 +67,7 @@ int printer(const char *format, form_spec specifiers[], va_list args)
 		{
 			char_count += _putchar(format[i]);
 		}
+		i++;
 	}
 
 	return (char_count);
