@@ -8,7 +8,7 @@
 
 int _printf(const char *format, ...)
 {
-    int j, checker, char_count = 0, i = 0;
+	int j, checker, char_count = 0, i = 0;
 	form_spec specifiers[] = {
 		{'c', print_char},
 		{'s', print_string},
@@ -23,34 +23,50 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(args, format);
+	char_count += printer(format, specifiers, args);
+	va_end(args);
+
+	return (char_count);
+}
+
+
+/**
+ * printer - prints anything
+ * @format: list of arguments passed to the function
+ * @specifiers: list of specifiers
+ * @args: list of arguments
+ * Return: number of characters printed
+ */
+int printer(const char *format, form_spec specifiers[], va_list args)
+{
+	int i = 0, j, char_count = 0;
+
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			j = 0;
-			while (specifiers[j])
+			i++;
+			if (format[i] == '\0')
+				return (-1);
+			for (j = 0; specifiers[j].c != NULL; j++)
 			{
-				if (format[i + 1] == specifiers[j].c)
+				if (format[i] == specifiers[j].c)
 				{
-					checker = specifiers[j].f(args);
-					if (checker == -1)
-						return (-1);
-					char_count += checker;
-					i++;
+					char_count += specifiers[j].f(args);
 					break;
 				}
-				j++;
 			}
-			if (format[i + 1] != '\0')
+			if (specifiers[j].c == NULL)
 			{
+				char_count += print_percent();
 				char_count += _putchar(format[i]);
-				i++;
-				continue;
 			}
-			else
-				return (-1);
 		}
-		char_count += _putchar(format[i]);
-		i++;
+		else
+		{
+			char_count += _putchar(format[i]);
+		}
 	}
+
+	return (char_count);
 }
