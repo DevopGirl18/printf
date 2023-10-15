@@ -32,6 +32,7 @@ int print_int(va_list);
 int print_bin(va_list);
 int print_unsigned(va_list);
 int print_rev(va_list);
+int print_rot13(va_list);
 
 /*helpers*/
 int print_number(int);
