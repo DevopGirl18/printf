@@ -8,7 +8,7 @@
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
-	return (print_string(&c));
+	return (_putchar(c));
 }
 
 
@@ -22,16 +22,17 @@ int print_str(va_list args)
 	char *str = va_arg(args, char *);
 
 	if (!str)
-		return (-1);
+		return (print_string("(null)"));
 	return (print_string(str));
 }
 
 
 /**
  * print_percent - prints a percent symbol
+ * @args: argument pointer
  * Return: number of characters printed
  */
-int print_percent()
+int print_percent(__attribute__((unused))va_list args)
 {
 	return (_putchar('%'));
 }
@@ -45,8 +46,15 @@ int print_percent()
 int print_int(va_list args)
 {
 	int value = va_arg(args, int);
+	int len = 0;
 
-	return (print_number(value));
+	if (value < 0)
+	{
+		len += _putchar('-');
+		value *= -1;
+	}
+
+	return (len + print_number((unsigned int)value));
 }
 
 
@@ -57,7 +65,7 @@ int print_int(va_list args)
  */
 int print_unsigned(va_list args)
 {
-	unsigned int value = va_arg(args, unsigned int);
+	unsigned int num = va_arg(args, unsigned int);
 
-	return (print_number(value));
+	return (print_number(num));
 }

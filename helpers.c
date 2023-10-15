@@ -31,7 +31,7 @@ int printer(const char *format, form_spec specifiers[], va_list args)
 			}
 			if (specifiers[j].c == NULL)
 			{
-				char_count += print_percent();
+				char_count += print_percent(args);
 				char_count += _putchar(format[i]);
 			}
 		}
@@ -51,26 +51,17 @@ int printer(const char *format, form_spec specifiers[], va_list args)
  * @value: integer to be printed
  * Return: number of digits printed
  */
-int print_number(int value)
+int print_number(unsigned int value)
 {
 	int power = 1, len = 0;
-	unsigned int num;
 
-	if (value < 0)
-	{
-		len += _putchar('-');
-		num = value * -1;
-	}
-	else
-		num = value;
-
-	while ((num / power) > 9)
+	while ((value / power) > 9)
 		power *= 10;
 
 	while (power > 0)
 	{
-		len += _putchar('0' + num / power);
-		num %= power;
+		len += _putchar('0' + value / power);
+		value %= power;
 		power /= 10;
 	}
 
