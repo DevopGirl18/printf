@@ -13,7 +13,7 @@ int print_bin(va_list args)
 	{
 		return (_putchar('0'));
 	}
-	
+
 	if (value == 1)
 	{
 		return (_putchar('1'));
