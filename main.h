@@ -22,7 +22,7 @@ int _putchar(char);
 /* _printf */
 int _printf(const char *, ...);
 
-/*specifiers 1 & 2*/
+/* specifier functions */
 int print_char(va_list);
 int print_str(va_list);
 int print_percent(va_list);
@@ -32,13 +32,12 @@ int print_unsigned(va_list);
 int print_rev(va_list);
 int print_rot13(va_list);
 
-/*helpers*/
+/* helper functions */
 int printer(const char *, form_spec *, va_list);
 int print_string(char *);
 int print_binary(unsigned int);
 int print_number(unsigned int);
 
-/* Function to handle other specifiers */
-int get_width(const char *format, int *i, va_list args);
+/* specifier handlers / extras */
 
 #endif /* MAIN_H */

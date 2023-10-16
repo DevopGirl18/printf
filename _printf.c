@@ -31,3 +31,49 @@ int _printf(const char *format, ...)
 
 	return (char_count);
 }
+
+
+/**
+ * printer - prints anything
+ * @format: list of arguments passed to the function
+ * @specifiers: list of specifiers
+ * @args: list of arguments
+ * Return: number of characters printed
+ */
+int printer(const char *format, form_spec specifiers[], va_list args)
+{
+	int i = 0, j, char_count = 0, checker;
+
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			if (format[i] == '\0')
+				return (-1);
+			for (j = 0; specifiers[j].c != NULL; j++)
+			{
+				if (format[i] == specifiers[j].c[0])
+				{
+					checker = specifiers[j].f(args);
+					if (checker == -1)
+						return (-1);
+					char_count += checker;
+					break;
+				}
+			}
+			if (specifiers[j].c == NULL)
+			{
+				char_count += print_percent(args);
+				char_count += _putchar(format[i]);
+			}
+		}
+		else
+		{
+			char_count += _putchar(format[i]);
+		}
+		i++;
+	}
+
+	return (char_count);
+}
