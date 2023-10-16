@@ -38,4 +38,7 @@ int print_string(char *);
 int print_binary(unsigned int);
 int print_number(unsigned int);
 
+/* Function to handle other specifiers */
+int get_width(const char *format, int *i, va_list args);
+
 #endif /* MAIN_H */
