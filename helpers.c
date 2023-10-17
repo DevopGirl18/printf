@@ -62,3 +62,30 @@ int print_binary(unsigned int value)
 
 	return (count);
 }
+
+
+/**
+ * print_HEX - prints a value in hexadecimal format in upper case - always 2 characters
+ * @value: value to print
+ * Return: number of digits printed
+ */
+int print_HEX(unsigned int value)
+{
+	int count = 0;
+
+	if (value < 16)
+	{
+		count += _putchar('0');
+		if (value < 10)
+			count += _putchar(value + '0');
+		else
+			count += _putchar((value - 10) + 'A');
+	}
+	else
+	{
+		count += print_HEX(value / 16);
+		count += print_HEX(value % 16);
+	}
+
+	return (count);
+}

@@ -88,3 +88,34 @@ int print_rot13(va_list args)
 
 	return (count);
 }
+
+
+/**
+ * print_STR - prints a string, replacing non-printable characters
+ * @args: argument pointer
+ * Return: number of characters printed
+ */
+int print_STR(va_list args)
+{
+	char *str = va_arg(args, char *);
+	int i, count = 0;
+
+	if (!str)
+		return (-1);
+
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] < 32 || str[i] >= 127)
+		{
+			count += _putchar('\\');
+			count += _putchar('x');
+			count += print_HEX(str[i]);
+		}
+		else
+		{
+			count += _putchar(str[i]);
+		}
+	}
+
+	return (count);
+}

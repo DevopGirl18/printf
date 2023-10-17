@@ -18,6 +18,7 @@ int _printf(const char *format, ...)
 		{"b", print_bin},
 		{"r", print_rev},
 		{"R", print_rot13},
+		{"S", print_STR},
 		{NULL, NULL}
 	};
 	va_list args;
