@@ -32,6 +32,7 @@ int print_unsigned(va_list);
 int print_rev(va_list);
 int print_rot13(va_list);
 int print_STR(va_list);
+int print_addr(va_list);
 
 /* helper functions */
 int printer(const char *, form_spec *, va_list);

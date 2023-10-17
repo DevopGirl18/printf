@@ -119,3 +119,21 @@ int print_STR(va_list args)
 
 	return (count);
 }
+
+
+/**
+ * print_addr - prints an address
+ * @args: argument pointer
+ * Return: number of characters printed
+ */
+int print_addr(va_list args)
+{
+	unsigned long int value = va_arg(args, unsigned long int);
+	int count = 0;
+
+	count += _putchar('0');
+	count += _putchar('x');
+	count += print_HEX(value, 1);
+
+	return (count);
+}

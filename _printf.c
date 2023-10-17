@@ -19,6 +19,7 @@ int _printf(const char *format, ...)
 		{"r", print_rev},
 		{"R", print_rot13},
 		{"S", print_STR},
+		{"p", print_addr},
 		{NULL, NULL}
 	};
 	va_list args;
