@@ -9,7 +9,7 @@ The available convertion specifiers are:
 
 Usage
 All the files are compiled on Ubuntu 14.04 LTS
-Compile your code with `gcc -Wall -Werror -Wextra -pedantic *.c _printf`
+Compile your code with `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o _printf`
 Include the "main.h" header file on the functions using the _printf()
 Create a file (main.c) with the contents below
 Example

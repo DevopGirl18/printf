@@ -65,12 +65,14 @@ int print_binary(unsigned int value)
 
 
 /**
- * print_HEX - prints a value in hexadecimal format in upper case - always 2 characters
+ * print_HEX - prints a value in hexadecimal format
+ * in upper case - always 2 characters
  * @value: value to print
- * @flag: flag to indicate if '0' prefix should be printed
+ * @flag: flag to indicate if '0' prefix should be printed, 0 = no, 1 = yes
+ * @caps: flag to indicate if upper case should be used, 0 = no, 1 = yes
  * Return: number of digits printed
  */
-int print_HEX(unsigned int value, int flag)
+int print_HEX(unsigned long int value, int flag, int caps)
 {
 	int count = 0;
 
@@ -81,13 +83,13 @@ int print_HEX(unsigned int value, int flag)
 		if (value < 10)
 			count += _putchar(value + '0');
 		else
-			count += _putchar((value - 10) + 'A');
+			count += (caps == 1) ? _putchar((value - 10) + 'A') : _putchar((value - 10) + 'a');
 	}
 	else
 	{
 		flag = 1;
-		count += print_HEX((value / 16), flag);
-		count += print_HEX((value % 16), flag);
+		count += print_HEX((value / 16), flag, caps);
+		count += print_HEX((value % 16), flag, caps);
 	}
 
 	return (count);

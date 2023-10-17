@@ -109,7 +109,7 @@ int print_STR(va_list args)
 		{
 			count += _putchar('\\');
 			count += _putchar('x');
-			count += print_HEX(str[i], 0);
+			count += print_HEX(str[i], 0, 1);
 		}
 		else
 		{
@@ -131,9 +131,13 @@ int print_addr(va_list args)
 	unsigned long int value = va_arg(args, unsigned long int);
 	int count = 0;
 
-	count += _putchar('0');
-	count += _putchar('x');
-	count += print_HEX(value, 1);
+	if (!value)
+	{
+		return (print_string("(nil)"));
+	}
+
+	count += print_string("0x");
+	count += print_HEX(value, 1, 0);
 
 	return (count);
 }

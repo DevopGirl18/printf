@@ -39,7 +39,7 @@ int printer(const char *, form_spec *, va_list);
 int print_string(char *);
 int print_binary(unsigned int);
 int print_number(unsigned int);
-int print_HEX(unsigned int, int);
+int print_HEX(unsigned long int, int, int);
 
 /* specifier handlers / extras */
 
