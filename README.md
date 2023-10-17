@@ -5,7 +5,22 @@ This project seeks to recreate this function, assigned by ALX-SE.
 
 The available convertion specifiers are:
 
-%c: Prints a single character.
+| Specifier | Description |
+| --- | --- |
+| c | Prints a single character |
+| s | Prints a string of characters |
+| % | Prints a percent sign |
+| d | Prints integers |
+| i | Prints integers |
+| b | Prints the binary representation of an unsigned decimal |
+| r | Prints a reversed string |
+| R | Prints the rot13'ed string |
+| S | Prints a string and non printable characters|
+| p | Prints the address of a pointer |
+| u | Prints the unsigned decimal representation of a number |
+| o | Prints the octal representation of a decimal number |
+| x | Prints the hexadecimal representation of a decimal number |
+| X | Prints the hexadecimal representation of a decimal number in uppercase letters |
 
 Usage
 All the files are compiled on Ubuntu 14.04 LTS
@@ -23,7 +38,11 @@ Example
  */
 int main(void)
 {
-    _printf("Let's try to printf a simple sentence.\n");
+    _printf("Hello, World!\n");
+    _printf("This is a %% sign\n");
+    _printf("%c and %s and %c\n", 'A', "test", 'B');
+    _printf("NULL string: %s", NULL);
+
     return (0);
 }
 ```
