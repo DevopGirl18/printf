@@ -35,6 +35,8 @@ int print_rot13(va_list);
 int print_STR(va_list);
 int print_addr(va_list);
 int print_oct(va_list);
+int print_hex(va_list);
+int print_HEX(va_list);
 
 /* helper functions */
 int print_string(char *);

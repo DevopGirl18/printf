@@ -7,9 +7,9 @@
  */
 int print_oct(va_list args)
 {
-	unsigned int value = va_arg(args, unsigned int);
+	unsigned int num = va_arg(args, unsigned int);
 
-	return (print_octal(value));
+	return (print_octal(num));
 }
 
 
@@ -20,9 +20,12 @@ int print_oct(va_list args)
  */
 int print_hex(va_list args)
 {
-	unsigned int value = va_arg(args, unsigned int);
+	unsigned int num = va_arg(args, unsigned int);
 
-	return (print_hexadecimal(value, 0, 0));
+	if (!num)
+		return (_putchar('0'));
+
+	return (print_hexadecimal(num, 0, 0));
 }
 
 
@@ -33,7 +36,10 @@ int print_hex(va_list args)
  */
 int print_HEX(va_list args)
 {
-	unsigned int value = va_arg(args, unsigned int);
+	unsigned int num = va_arg(args, unsigned int);
 
-	return (print_hexadecimal(value, 0, 1));
+	if (!num)
+		return (_putchar('0'));
+
+	return (print_hexadecimal(num, 0, 1));
 }
