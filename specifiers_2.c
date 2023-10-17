@@ -109,7 +109,7 @@ int print_STR(va_list args)
 		{
 			count += _putchar('\\');
 			count += _putchar('x');
-			count += print_HEX(str[i]);
+			count += print_HEX(str[i], 0);
 		}
 		else
 		{
