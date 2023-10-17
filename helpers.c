@@ -43,7 +43,7 @@ int print_string(char *str)
 
 /**
  * print_binary - prints a value in binary format, recursively
- * @value: value to print
+ * @value: value to be printed
  * Return: number of digits printed
  */
 int print_binary(unsigned int value)
@@ -65,20 +65,20 @@ int print_binary(unsigned int value)
 
 
 /**
- * print_HEX - prints a value in hexadecimal format
+ * print_hexadecimal - prints a value in hexadecimal format
  * in upper case - always 2 characters
- * @value: value to print
- * @flag: flag to indicate if '0' prefix should be printed, 0 = no, 1 = yes
+ * @value: value to be printed
+ * @prefix: flag to indicate if '0' prefix should be printed, 0 = no, 1 = yes
  * @caps: flag to indicate if upper case should be used, 0 = no, 1 = yes
  * Return: number of digits printed
  */
-int print_HEX(unsigned long int value, int flag, int caps)
+int print_hexadecimal(unsigned long int value, int prefix, int caps)
 {
 	int count = 0;
 
 	if (value < 16)
 	{
-		if (!flag)
+		if (!prefix)
 			count += _putchar('0');
 		if (value < 10)
 			count += _putchar(value + '0');
@@ -88,9 +88,32 @@ int print_HEX(unsigned long int value, int flag, int caps)
 	}
 	else
 	{
-		flag = 1;
-		count += print_HEX((value / 16), flag, caps);
-		count += print_HEX((value % 16), flag, caps);
+		prefix = 1;
+		count += print_hexadecimal((value / 16), prefix, caps);
+		count += print_hexadecimal((value % 16), prefix, caps);
+	}
+
+	return (count);
+}
+
+
+/**
+ * print_octal - prints a value in octal format recursively
+ * @value: value to be printed
+ * Return: number of digits printed
+ */
+int print_octal(unsigned int value)
+{
+	int count = 0;
+
+	if (value < 8)
+	{
+		count += _putchar(value + '0');
+	}
+	else
+	{
+		count += print_octal((value / 8));
+		count += _putchar((value % 8) + '0');
 	}
 
 	return (count);

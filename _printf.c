@@ -20,6 +20,10 @@ int _printf(const char *format, ...)
 		{"R", print_rot13},
 		{"S", print_STR},
 		{"p", print_addr},
+		{"u", print_unsigned},
+		{"o", print_oct},
+		{"x", print_hex},
+		{"X", print_HEX},
 		{NULL, NULL}
 	};
 	va_list args;

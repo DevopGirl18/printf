@@ -109,7 +109,7 @@ int print_STR(va_list args)
 		{
 			count += _putchar('\\');
 			count += _putchar('x');
-			count += print_HEX(str[i], 0, 1);
+			count += print_hexadecimal(str[i], 0, 1);
 		}
 		else
 		{
@@ -137,7 +137,7 @@ int print_addr(va_list args)
 	}
 
 	count += print_string("0x");
-	count += print_HEX(value, 1, 0);
+	count += print_hexadecimal(value, 1, 0);
 
 	return (count);
 }
