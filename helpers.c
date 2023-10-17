@@ -78,12 +78,13 @@ int print_HEX(unsigned long int value, int flag, int caps)
 
 	if (value < 16)
 	{
-		if (flag == 0)
+		if (!flag)
 			count += _putchar('0');
 		if (value < 10)
 			count += _putchar(value + '0');
 		else
-			count += (caps == 1) ? _putchar((value - 10) + 'A') : _putchar((value - 10) + 'a');
+			count += caps ?
+				_putchar((value - 10) + 'A') : _putchar((value - 10) + 'a');
 	}
 	else
 	{
